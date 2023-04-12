@@ -31,3 +31,5 @@ optional arguments:
   --log_path LOG_PATH
   --metric_learning {NCA,LFDA,MLKR,None}
   ```
+
+  Experiment results will be published soon
