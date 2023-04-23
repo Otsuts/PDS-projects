@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9a35a565-b6b8-4240-a142-79de5f211adc" name="gpu36">
+        <fileTransfer rootFolder="/NAS2020/Workspaces/DMGroup/jzchen" accessType="SFTP" host="gpu36" port="22182" sshConfigId="854b4070-2672-42fa-8fde-11a7c2048583" sshConfig="jzchen@gpu36:22182 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

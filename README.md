@@ -32,4 +32,4 @@ optional arguments:
   --metric_learning {NCA,LFDA,MLKR,None}
   ```
 
-  Experiment results will be published soon
+已经得到了实验结果在报告中，跑了两周得到的预处理数据.npy想要的可以私
