@@ -1,0 +1,200 @@
+08:33:25 : Epoch[0] pretrain loss 3.5074 training acc 0.4553
+08:33:25 : Epoch [1] with testing accuracy: 0.3062
+08:33:26 : Epoch[1] pretrain loss 3.3528 training acc 0.5931
+08:33:26 : Epoch [2] with testing accuracy: 0.2572
+08:33:27 : Epoch[2] pretrain loss 3.3324 training acc 0.6134
+08:33:28 : Epoch [3] with testing accuracy: 0.2742
+08:33:28 : Epoch[3] pretrain loss 3.3207 training acc 0.6252
+08:33:29 : Epoch [4] with testing accuracy: 0.2706
+08:33:30 : Epoch[4] pretrain loss 3.2880 training acc 0.6580
+08:33:30 : Epoch [5] with testing accuracy: 0.2722
+08:33:31 : Epoch[5] pretrain loss 3.2549 training acc 0.6914
+08:33:31 : Epoch [6] with testing accuracy: 0.2260
+08:33:32 : Epoch[6] pretrain loss 3.2456 training acc 0.7006
+08:33:32 : Epoch [7] with testing accuracy: 0.3076
+08:33:33 : Epoch[7] pretrain loss 3.2452 training acc 0.7010
+08:33:34 : Epoch [8] with testing accuracy: 0.2975
+08:33:35 : Epoch[8] pretrain loss 3.2208 training acc 0.7254
+08:33:35 : Epoch [9] with testing accuracy: 0.2941
+08:33:36 : Epoch[9] pretrain loss 3.2078 training acc 0.7380
+08:33:36 : Epoch [10] with testing accuracy: 0.2787
+08:33:37 : Epoch[10] pretrain loss 3.1912 training acc 0.7548
+08:33:37 : Epoch [11] with testing accuracy: 0.2721
+08:33:38 : Epoch[11] pretrain loss 3.1804 training acc 0.7656
+08:33:38 : Epoch [12] with testing accuracy: 0.2755
+08:33:39 : Epoch[12] pretrain loss 3.1613 training acc 0.7848
+08:33:40 : Epoch [13] with testing accuracy: 0.2830
+08:33:41 : Epoch[13] pretrain loss 3.1478 training acc 0.7978
+08:33:41 : Epoch [14] with testing accuracy: 0.2247
+08:33:42 : Epoch[14] pretrain loss 3.1446 training acc 0.8015
+08:33:42 : Epoch [15] with testing accuracy: 0.2546
+08:33:43 : Epoch[15] pretrain loss 3.1451 training acc 0.8009
+08:33:43 : Epoch [16] with testing accuracy: 0.2473
+08:33:44 : Epoch[16] pretrain loss 3.1373 training acc 0.8087
+08:33:44 : Epoch [17] with testing accuracy: 0.2792
+08:33:45 : Epoch[17] pretrain loss 3.1198 training acc 0.8262
+08:33:46 : Epoch [18] with testing accuracy: 0.2764
+08:33:47 : Epoch[18] pretrain loss 3.1078 training acc 0.8384
+08:33:47 : Epoch [19] with testing accuracy: 0.2733
+08:33:48 : Epoch[19] pretrain loss 3.1075 training acc 0.8385
+08:33:48 : Epoch [20] with testing accuracy: 0.2172
+08:33:49 : Epoch[20] pretrain loss 3.1032 training acc 0.8427
+08:33:49 : Epoch [21] with testing accuracy: 0.2429
+08:33:50 : Epoch[21] pretrain loss 3.1033 training acc 0.8425
+08:33:50 : Epoch [22] with testing accuracy: 0.2572
+08:33:51 : Epoch[22] pretrain loss 3.0899 training acc 0.8563
+08:33:51 : Epoch [23] with testing accuracy: 0.2958
+08:33:52 : Epoch[23] pretrain loss 3.0875 training acc 0.8583
+08:33:53 : Epoch [24] with testing accuracy: 0.2759
+08:33:54 : Epoch[24] pretrain loss 3.0810 training acc 0.8648
+08:33:54 : Epoch [25] with testing accuracy: 0.2344
+08:33:55 : Epoch[25] pretrain loss 3.0777 training acc 0.8682
+08:33:55 : Epoch [26] with testing accuracy: 0.2725
+08:33:56 : Epoch[26] pretrain loss 3.0733 training acc 0.8725
+08:33:56 : Epoch [27] with testing accuracy: 0.2564
+08:33:57 : Epoch[27] pretrain loss 3.0690 training acc 0.8768
+08:33:57 : Epoch [28] with testing accuracy: 0.2559
+08:33:58 : Epoch[28] pretrain loss 3.0683 training acc 0.8776
+08:33:58 : Epoch [29] with testing accuracy: 0.2550
+08:33:59 : Epoch[29] pretrain loss 3.0691 training acc 0.8767
+08:34:00 : Epoch [30] with testing accuracy: 0.2434
+08:34:00 : Epoch[30] pretrain loss 3.0668 training acc 0.8791
+08:34:01 : Epoch [31] with testing accuracy: 0.2720
+08:34:02 : Epoch[31] pretrain loss 3.0640 training acc 0.8819
+08:34:02 : Epoch [32] with testing accuracy: 0.2358
+08:34:03 : Epoch[32] pretrain loss 3.0644 training acc 0.8812
+08:34:03 : Epoch [33] with testing accuracy: 0.2811
+08:34:04 : Epoch[33] pretrain loss 3.0658 training acc 0.8801
+08:34:04 : Epoch [34] with testing accuracy: 0.2147
+08:34:05 : Epoch[34] pretrain loss 3.0651 training acc 0.8808
+08:34:05 : Epoch [35] with testing accuracy: 0.2802
+08:34:06 : Epoch[35] pretrain loss 3.0636 training acc 0.8821
+08:34:07 : Epoch [36] with testing accuracy: 0.2188
+08:34:08 : Epoch[36] pretrain loss 3.0626 training acc 0.8831
+08:34:08 : Epoch [37] with testing accuracy: 0.2636
+08:34:09 : Epoch[37] pretrain loss 3.0625 training acc 0.8832
+08:34:09 : Epoch [38] with testing accuracy: 0.2193
+08:34:10 : Epoch[38] pretrain loss 3.0652 training acc 0.8807
+08:34:10 : Epoch [39] with testing accuracy: 0.2658
+08:34:11 : Epoch[39] pretrain loss 3.0631 training acc 0.8826
+08:34:11 : Epoch [40] with testing accuracy: 0.2367
+08:34:12 : Epoch[40] pretrain loss 3.0633 training acc 0.8825
+08:34:12 : Epoch [41] with testing accuracy: 0.2831
+08:34:13 : Epoch[41] pretrain loss 3.0629 training acc 0.8829
+08:34:14 : Epoch [42] with testing accuracy: 0.2663
+08:34:14 : Epoch[42] pretrain loss 3.0618 training acc 0.8840
+08:34:15 : Epoch [43] with testing accuracy: 0.3158
+08:34:16 : Epoch[43] pretrain loss 3.0624 training acc 0.8833
+08:34:16 : Epoch [44] with testing accuracy: 0.2861
+08:34:17 : Epoch[44] pretrain loss 3.0671 training acc 0.8788
+08:34:17 : Epoch [45] with testing accuracy: 0.2364
+08:34:18 : Epoch[45] pretrain loss 3.0640 training acc 0.8818
+08:34:18 : Epoch [46] with testing accuracy: 0.2720
+08:34:19 : Epoch[46] pretrain loss 3.0657 training acc 0.8800
+08:34:19 : Epoch [47] with testing accuracy: 0.2776
+08:34:20 : Epoch[47] pretrain loss 3.0615 training acc 0.8843
+08:34:20 : Epoch [48] with testing accuracy: 0.3087
+08:34:21 : Epoch[48] pretrain loss 3.0625 training acc 0.8834
+08:34:22 : Epoch [49] with testing accuracy: 0.2774
+08:34:23 : Epoch[49] pretrain loss 3.0606 training acc 0.8852
+08:34:23 : Epoch [50] with testing accuracy: 0.2881
+08:34:24 : Epoch[50] pretrain loss 3.0587 training acc 0.8872
+08:34:24 : Epoch [51] with testing accuracy: 0.3025
+08:34:25 : Epoch[51] pretrain loss 3.0580 training acc 0.8877
+08:34:25 : Epoch [52] with testing accuracy: 0.2869
+08:34:26 : Epoch[52] pretrain loss 3.0610 training acc 0.8848
+08:34:26 : Epoch [53] with testing accuracy: 0.3095
+08:34:27 : Epoch[53] pretrain loss 3.0478 training acc 0.8979
+08:34:27 : Epoch [54] with testing accuracy: 0.2294
+08:34:28 : Epoch[54] pretrain loss 3.0466 training acc 0.8993
+08:34:29 : Epoch [55] with testing accuracy: 0.2779
+08:34:30 : Epoch[55] pretrain loss 3.0378 training acc 0.9081
+08:34:30 : Epoch [56] with testing accuracy: 0.3191
+08:34:31 : Epoch[56] pretrain loss 3.0381 training acc 0.9076
+08:34:31 : Epoch [57] with testing accuracy: 0.2969
+08:34:32 : Epoch[57] pretrain loss 3.0328 training acc 0.9130
+08:34:32 : Epoch [58] with testing accuracy: 0.2783
+08:34:33 : Epoch[58] pretrain loss 3.0409 training acc 0.9049
+08:34:33 : Epoch [59] with testing accuracy: 0.3287
+08:34:34 : Epoch[59] pretrain loss 3.0367 training acc 0.9092
+08:34:34 : Epoch [60] with testing accuracy: 0.2746
+08:34:35 : Epoch[60] pretrain loss 3.0294 training acc 0.9166
+08:34:36 : Epoch [61] with testing accuracy: 0.2428
+08:34:37 : Epoch[61] pretrain loss 3.0303 training acc 0.9155
+08:34:37 : Epoch [62] with testing accuracy: 0.2401
+08:34:38 : Epoch[62] pretrain loss 3.0300 training acc 0.9158
+08:34:38 : Epoch [63] with testing accuracy: 0.2622
+08:34:39 : Epoch[63] pretrain loss 3.0300 training acc 0.9157
+08:34:39 : Epoch [64] with testing accuracy: 0.2923
+08:34:40 : Epoch[64] pretrain loss 3.0255 training acc 0.9203
+08:34:40 : Epoch [65] with testing accuracy: 0.2741
+08:34:41 : Epoch[65] pretrain loss 3.0327 training acc 0.9130
+08:34:41 : Epoch [66] with testing accuracy: 0.2851
+08:34:42 : Epoch[66] pretrain loss 3.0334 training acc 0.9124
+08:34:43 : Epoch [67] with testing accuracy: 0.2961
+08:34:44 : Epoch[67] pretrain loss 3.0293 training acc 0.9165
+08:34:44 : Epoch [68] with testing accuracy: 0.3148
+08:34:45 : Epoch[68] pretrain loss 3.0253 training acc 0.9206
+08:34:45 : Epoch [69] with testing accuracy: 0.2503
+08:34:46 : Epoch[69] pretrain loss 3.0278 training acc 0.9180
+08:34:46 : Epoch [70] with testing accuracy: 0.3004
+08:34:47 : Epoch[70] pretrain loss 3.0299 training acc 0.9158
+08:34:47 : Epoch [71] with testing accuracy: 0.2737
+08:34:48 : Epoch[71] pretrain loss 3.0270 training acc 0.9188
+08:34:48 : Epoch [72] with testing accuracy: 0.2836
+08:34:49 : Epoch[72] pretrain loss 3.0269 training acc 0.9189
+08:34:49 : Epoch [73] with testing accuracy: 0.2670
+08:34:50 : Epoch[73] pretrain loss 3.0329 training acc 0.9128
+08:34:51 : Epoch [74] with testing accuracy: 0.2684
+08:34:52 : Epoch[74] pretrain loss 3.0316 training acc 0.9141
+08:34:52 : Epoch [75] with testing accuracy: 0.2632
+08:34:53 : Epoch[75] pretrain loss 3.0324 training acc 0.9133
+08:34:53 : Epoch [76] with testing accuracy: 0.2883
+08:34:54 : Epoch[76] pretrain loss 3.0267 training acc 0.9191
+08:34:54 : Epoch [77] with testing accuracy: 0.2383
+08:34:55 : Epoch[77] pretrain loss 3.0277 training acc 0.9182
+08:34:55 : Epoch [78] with testing accuracy: 0.2601
+08:34:56 : Epoch[78] pretrain loss 3.0269 training acc 0.9190
+08:34:56 : Epoch [79] with testing accuracy: 0.2630
+08:34:57 : Epoch[79] pretrain loss 3.0252 training acc 0.9206
+08:34:58 : Epoch [80] with testing accuracy: 0.2636
+08:34:58 : Epoch[80] pretrain loss 3.0293 training acc 0.9165
+08:34:59 : Epoch [81] with testing accuracy: 0.2704
+08:35:00 : Epoch[81] pretrain loss 3.0260 training acc 0.9198
+08:35:00 : Epoch [82] with testing accuracy: 0.2564
+08:35:01 : Epoch[82] pretrain loss 3.0295 training acc 0.9163
+08:35:01 : Epoch [83] with testing accuracy: 0.2756
+08:35:02 : Epoch[83] pretrain loss 3.0346 training acc 0.9112
+08:35:02 : Epoch [84] with testing accuracy: 0.2376
+08:35:03 : Epoch[84] pretrain loss 3.0324 training acc 0.9135
+08:35:03 : Epoch [85] with testing accuracy: 0.2923
+08:35:04 : Epoch[85] pretrain loss 3.0319 training acc 0.9140
+08:35:04 : Epoch [86] with testing accuracy: 0.2802
+08:35:05 : Epoch[86] pretrain loss 3.0277 training acc 0.9181
+08:35:05 : Epoch [87] with testing accuracy: 0.2490
+08:35:06 : Epoch[87] pretrain loss 3.0312 training acc 0.9146
+08:35:07 : Epoch [88] with testing accuracy: 0.2612
+08:35:07 : Epoch[88] pretrain loss 3.0269 training acc 0.9189
+08:35:08 : Epoch [89] with testing accuracy: 0.2886
+08:35:09 : Epoch[89] pretrain loss 3.0261 training acc 0.9197
+08:35:09 : Epoch [90] with testing accuracy: 0.2615
+08:35:10 : Epoch[90] pretrain loss 3.0295 training acc 0.9162
+08:35:10 : Epoch [91] with testing accuracy: 0.2939
+08:35:11 : Epoch[91] pretrain loss 3.0312 training acc 0.9146
+08:35:11 : Epoch [92] with testing accuracy: 0.2974
+08:35:12 : Epoch[92] pretrain loss 3.0293 training acc 0.9165
+08:35:12 : Epoch [93] with testing accuracy: 0.2774
+08:35:13 : Epoch[93] pretrain loss 3.0331 training acc 0.9126
+08:35:13 : Epoch [94] with testing accuracy: 0.2651
+08:35:14 : Epoch[94] pretrain loss 3.0310 training acc 0.9147
+08:35:15 : Epoch [95] with testing accuracy: 0.2731
+08:35:16 : Epoch[95] pretrain loss 3.0389 training acc 0.9069
+08:35:16 : Epoch [96] with testing accuracy: 0.2817
+08:35:17 : Epoch[96] pretrain loss 3.0246 training acc 0.9213
+08:35:17 : Epoch [97] with testing accuracy: 0.2924
+08:35:18 : Epoch[97] pretrain loss 3.0364 training acc 0.9095
+08:35:18 : Epoch [98] with testing accuracy: 0.2434
+08:35:19 : Epoch[98] pretrain loss 3.0385 training acc 0.9073
+08:35:19 : Epoch [99] with testing accuracy: 0.2501
+08:35:20 : Epoch[99] pretrain loss 3.0347 training acc 0.9112
+08:35:20 : Epoch [100] with testing accuracy: 0.2798

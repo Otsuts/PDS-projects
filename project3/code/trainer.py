@@ -1,4 +1,3 @@
-from typing import Any
 import torch
 import sys
 import torch.nn as nn
@@ -17,7 +16,7 @@ class SemRel():
         self.args = args
         self.device = torch.device(
             'cuda') if torch.cuda.is_available() else torch.device('cpu')
-        self.model = SemRelClassifier().to(self.device)
+        self.model = SemRelClassifier(args).to(self.device)
         self.train_dataset = BiasDataset(dataset_name='trainvalclasses.txt')
         self.test_dataset = BiasDataset(dataset_name='testclasses.txt')
         self.train_loader = DataLoader(
@@ -38,13 +37,13 @@ class SemRel():
                 l, a = self.fit_classifier(data, feature, label)
                 loss += l
                 acc += a
-            print(
-                f'Epoch[{epoch}] pretrain loss {loss/self.train_loader.__len__():.4f} training acc {acc/self.train_loader.__len__():.4f}')
+            write_log(
+                f'Epoch[{epoch}] pretrain loss {loss/self.train_loader.__len__():.4f} training acc {acc/self.train_loader.__len__():.4f}', self.args)
             # test on testing dataset
             if (epoch+1) % self.args.eval_iter == 0:
                 curr_acc = self.evaluate(self.test_loader, self.test_dataset)
-                print(
-                    f'Epoch [{epoch+1}] with testing accuracy: {curr_acc:.4f}')
+                write_log(
+                    f'Epoch [{epoch+1}] with testing accuracy: {curr_acc:.4f}', self.args)
 
     def evaluate(self, dataloader, dataset):
         self.model.eval()
@@ -56,7 +55,8 @@ class SemRel():
                 data = data.to(self.device)
                 feature = feature.to(self.device).float()
                 output = self.model(data)
-                # output = torch.matmul(output,self.similarity_matrix.to(self.device)).softmax(dim=0)
+                output = torch.matmul(
+                    output, self.similarity_matrix.to(self.device)).softmax(dim=0)
 
                 curr_pred_classes = self.label_to_class(
                     output, dataset.label_available)
@@ -78,7 +78,7 @@ class SemRel():
             for j in range(i+1, mat_size):
                 similarity_mat[i][j] = similarity_mat[j][i] = torch.cosine_similarity(
                     torch.from_numpy(predicate_map[i, :]).float().unsqueeze(0), torch.from_numpy(predicate_map[j, :]).float().unsqueeze(0))
-        return similarity_mat
+        return torch.nn.functional.normalize(similarity_mat)
 
     def fit_classifier(self, data, feature, label):
         data = data.to(self.device)
@@ -107,7 +107,7 @@ class SemEmb():
         self.args = args
         self.device = torch.device(
             'cuda')if torch.cuda.is_available() else torch.device('cpu')
-        self.model = Classifier().to(self.device)
+        self.model = Classifier(args).to(self.device)
         self.train_dataset = BiasDataset(dataset_name='trainvalclasses.txt')
         self.test_dataset = BiasDataset(dataset_name='testclasses.txt')
         self.train_loader = DataLoader(
@@ -146,12 +146,13 @@ class SemEmb():
             train_true_class = np.array(train_true_class)
             train_pred_class = np.array(train_pred_class)
             train_acc = np.mean(train_pred_class == train_true_class)
-            print(f'Epoch [{epoch+1}] with training accuracy: {train_acc:.4f}')
+            write_log(
+                f'Epoch [{epoch+1}] with training accuracy: {train_acc:.4f}', self.args)
             # test on test data
             if (epoch+1) % self.args.eval_iter == 0:
                 curr_acc = self.evaluate(self.test_loader, self.test_dataset)
-                print(
-                    f'Epoch [{epoch+1}] with testing accuracy: {curr_acc:.4f}')
+                write_log(
+                    f'Epoch [{epoch+1}] with testing accuracy: {curr_acc:.4f}', self.args)
 
     def evaluate(self, dataloader, dataset):
         self.model.eval()
@@ -270,6 +271,7 @@ class SynTrainer():
 
             self.optim_D.zero_grad()
             L_disc.backward()
+            self.optim_D.step()
         # optimize generator
         Z = self.z_distribution.sample(
             [feature.shape[0], self.z_dim]).to(self.device)
@@ -324,9 +326,9 @@ class SynTrainer():
         if os.path.exists(f'../models/pretrain_{self.args.model}_{self.args.learning_rate}.pth'):
             self.classifier.load_state_dict(torch.load(
                 f'../models/pretrain_{self.args.model}_{self.args.learning_rate}.pth'))
-            print('Pretrain model loaded')
+            write_log('Pretrain model loaded', args=self.args)
         else:
-            print('Pretraining classifier on training set')
+            write_log('Pretraining classifier on training set', self.args)
             best_pretrain_acc = 0.0
             for epoch in range(self.args.pretrain_epochs):
                 loss = 0
@@ -338,35 +340,35 @@ class SynTrainer():
                 if acc > best_pretrain_acc:
                     torch.save(self.classifier.state_dict(
                     ), f'../models/pretrain_{self.args.model}_{self.args.learning_rate}.pth')
-                print(
-                    f'Epoch[{epoch}] pretrain loss {loss/self.train_loader.__len__():.4f} training acc {acc/self.train_loader.__len__():.4f}')
+                write_log(
+                    f'Epoch[{epoch}] pretrain loss {loss/self.train_loader.__len__():.4f} training acc {acc/self.train_loader.__len__():.4f}', self.args)
         # train gan
-        if os.path.exists(f'../models/generator_{self.args.model}_{self.args.g_lr}.pth') and \
-                os.path.exists(f'../models/discriminator_{self.args.model}_{self.args.d_lr}.pth'):
+        if os.path.exists(f'../models/generator_{self.args.model}_{self.args.g_lr}_{self.args.gan_epochs}.pth') and \
+                os.path.exists(f'../models/discriminator_{self.args.model}_{self.args.d_lr}_{self.args.gan_epochs}.pth'):
             self.Generator.load_state_dict(torch.load(
-                f'../models/generator_{self.args.model}_{self.args.g_lr}.pth'))
+                f'../models/generator_{self.args.model}_{self.args.g_lr}_{self.args.gan_epochs}.pth'))
             self.Discriminator.load_state_dict(torch.load(
-                f'../models/discriminator_{self.args.model}_{self.args.d_lr}.pth'))
-            print('GAN model loaded')
+                f'../models/discriminator_{self.args.model}_{self.args.d_lr}_{self.args.gan_epochs}.pth'))
+            write_log('GAN model loaded', self.args)
         else:
-            print('Training gan')
-            for epoch in range(self.args.num_epochs):
+            write_log('Training gan', self.args)
+            for epoch in range(self.args.gan_epochs):
                 loss_disc = 0
                 loss_gen = 0
                 for data, feature, label in self.train_loader:
                     l_gen, l_disc = self.fit_GAN(data, feature, label, True)
                     loss_disc += l_disc
                     loss_gen += l_gen
-                print(
-                    f'Epoch[{epoch}] disc loss: {loss_disc:.4f}, gen loss: {loss_gen:.4f}')
+                write_log(
+                    f'Epoch[{epoch}] disc loss: {loss_disc:.4f}, gen loss: {loss_gen:.4f}', self.args)
             torch.save(self.Generator.state_dict(
-            ), f'../models/generator_{self.args.model}_{self.args.g_lr}.pth')
+            ), f'../models/generator_{self.args.model}_{self.args.g_lr}_{self.args.gan_epochs}.pth')
             torch.save(self.Discriminator.state_dict(
-            ), f'../models/discriminator_{self.args.model}_{self.args.d_lr}.pth')
+            ), f'../models/discriminator_{self.args.model}_{self.args.d_lr}_{self.args.gan_epochs}.pth')
 
         # train final classifier
         syn_dataset = SynDataset(self.create_syn_dataset(
-            self.test_dataset.label_available, self.train_dataset.predicate_binary_mat,n_samples=self.args.num_samples))
+            self.test_dataset.label_available, self.train_dataset.predicate_binary_mat, n_samples=self.args.num_samples))
         final_dataset = ConcatDataset([self.train_dataset, syn_dataset])
         final_train_loader = DataLoader(
             final_dataset, batch_size=self.args.batch_size, shuffle=True)
@@ -397,12 +399,13 @@ class SynTrainer():
             train_true_class = np.array(train_true_class)
             train_pred_class = np.array(train_pred_class)
             train_acc = np.mean(train_pred_class == train_true_class)
-            print(f'Epoch [{epoch+1}] with training accuracy: {train_acc:.4f}')
+            write_log(
+                f'Epoch [{epoch+1}] with training accuracy: {train_acc:.4f}', self.args)
             # test on test data
             if (epoch+1) % self.args.eval_iter == 0:
                 curr_acc = self.evaluate(self.test_loader, self.test_dataset)
-                print(
-                    f'Epoch [{epoch+1}] with testing accuracy: {curr_acc:.4f}')
+                write_log(
+                    f'Epoch [{epoch+1}] with testing accuracy: {curr_acc:.4f}', self.args)
 
     def label_to_class(self, pred_labels, label_available):
         predictions = []
@@ -410,14 +413,6 @@ class SynTrainer():
         pred_labels_cp[:, label_available] = 0
         pred = pred_labels - pred_labels_cp
         predictions = torch.argmax(pred, dim=1)
-        # for i in range(pred_labels.shape[0]):  # 遍历每一个样本
-        #     best_score = 0
-        #     best_index = -1
-        #     for j in label_available:
-        #         if best_score < pred_labels[i][j]:
-        #             best_index = j
-        #             best_score = pred_labels[i][j]
-        #     predictions.append(best_index)
         return predictions.cpu()
 
     def evaluate(self, dataloader, dataset):

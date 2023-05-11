@@ -2,16 +2,32 @@ import torch.nn as nn
 
 
 class Classifier(nn.Module):
-    def __init__(self, in_dim=2048, hidden_dim=128, num_labels=85) -> None:
+    def __init__(self, args, in_dim=2048, hidden_dim=128, num_labels=85) -> None:
         super().__init__()
-        self.fc = nn.Sequential(
-            nn.Linear(in_dim, hidden_dim),
-            nn.BatchNorm1d(hidden_dim),
-            nn.Dropout(0.5),
-            nn.ReLU(),
-            nn.Linear(hidden_dim, num_labels),
-            nn.Sigmoid()
-        )
+        self.args = args
+        if not args.use_big:
+            self.fc = nn.Sequential(
+                nn.Linear(in_dim, hidden_dim),
+                nn.BatchNorm1d(hidden_dim),
+                nn.Dropout(0.5),
+                nn.ReLU(),
+                nn.Linear(hidden_dim, num_labels),
+                nn.Sigmoid()
+            )
+        else:
+            self.fc = nn.Sequential(
+                nn.Linear(in_dim, 2000),
+                nn.LeakyReLU(),
+                nn.Dropout(0.2),
+                nn.Linear(2000, 1200),
+                nn.LeakyReLU(),
+                nn.Dropout(0.2),
+                nn.Linear(1200, 1200),
+                nn.LeakyReLU(),
+                nn.Dropout(0.2),
+                nn.Linear(1200, num_labels),
+                nn.Sigmoid()
+            )
 
     def forward(self, X):
         return self.fc(X)  # bs*dim
@@ -46,21 +62,31 @@ class Discriminator(nn.Module):
 
 
 class SemRelClassifier(nn.Module):
-    def __init__(self, in_dim=2048, hidden_dim=128, output_dim=50) -> None:
+    def __init__(self, args, in_dim=2048, hidden_dim=128, output_dim=50) -> None:
         super().__init__()
-        self.fc = nn.Sequential(
-            nn.Linear(in_dim, 2000),
-            nn.LeakyReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(2000, 1200),
-            nn.LeakyReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(1200, 1200),
-            nn.LeakyReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(1200, output_dim),
-            nn.Softmax(dim=0)
-        )
+        if args.use_big:
+            self.fc = nn.Sequential(
+                nn.Linear(in_dim, 2000),
+                nn.LeakyReLU(),
+                nn.Dropout(0.2),
+                nn.Linear(2000, 1200),
+                nn.LeakyReLU(),
+                nn.Dropout(0.2),
+                nn.Linear(1200, 1200),
+                nn.LeakyReLU(),
+                nn.Dropout(0.2),
+                nn.Linear(1200, output_dim),
+                nn.Softmax(dim=1)
+            )
+        else:
+            self.fc = nn.Sequential(
+                nn.Linear(in_dim, hidden_dim),
+                nn.BatchNorm1d(hidden_dim),
+                nn.Dropout(0.5),
+                nn.ReLU(),
+                nn.Linear(hidden_dim, output_dim),
+                nn.Softmax(dim=1)
+            )
 
     def forward(self, X):
         return self.fc(X)  # bs*50
@@ -80,7 +106,7 @@ class MLPClassifier(nn.Module):
             nn.LeakyReLU(),
             nn.Dropout(0.2),
             nn.Linear(1200, out_dim),
-            nn.Softmax(dim=0)
+            nn.Softmax(dim=1)
         )
 
     def forward(self, x):

@@ -7,10 +7,14 @@ import numpy as np
 
 
 def write_log(w, args):
-    file_name = args.log_path + '/'+args.model+'/' + datetime.date.today().strftime('%m%d') + \
-        f"_{args.model}_{args.learning_rate}.log"
-    if not os.path.exists(args.log_path + '/'+args.model+'/'):
-        os.mkdir(args.log_path + '/'+args.model+'/')
+    if args.model == 'synthetic':
+        file_name = '../'+args.log_path + '/'+args.model+'/' + datetime.date.today().strftime('%m%d') + \
+            f"_{args.model}_LR{args.learning_rate}_NS{args.num_samples}_ZD{args.z_dim}_GLR{args.g_lr}_DLR{args.d_lr}.log"
+    else:
+        file_name = '../'+args.log_path + '/'+args.model+'/' + datetime.date.today().strftime('%m%d') + \
+            f"_{args.model}_{args.learning_rate}_{args.use_big}.log"
+    if not os.path.exists('../'+args.log_path + '/'+args.model+'/'):
+        os.mkdir('../'+args.log_path + '/'+args.model+'/')
     t0 = datetime.datetime.now().strftime('%H:%M:%S')
     info = "{} : {}".format(t0, w)
     print(info)
