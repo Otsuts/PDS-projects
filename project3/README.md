@@ -1,4 +1,4 @@
-# 这次作业要做zero shot leaning
+# 这次作业要做zero shot learning
 
 ### 真写不出来啊cao
 
