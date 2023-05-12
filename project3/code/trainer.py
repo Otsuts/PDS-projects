@@ -372,6 +372,7 @@ class SynTrainer():
         final_dataset = ConcatDataset([self.train_dataset, syn_dataset])
         final_train_loader = DataLoader(
             final_dataset, batch_size=self.args.batch_size, shuffle=True)
+        best_test_acc = 0.0
         for epoch in range(self.args.num_epochs):
             train_pred_class = []
             train_true_class = []
@@ -402,10 +403,14 @@ class SynTrainer():
             write_log(
                 f'Epoch [{epoch+1}] with training accuracy: {train_acc:.4f}', self.args)
             # test on test data
+
             if (epoch+1) % self.args.eval_iter == 0:
                 curr_acc = self.evaluate(self.test_loader, self.test_dataset)
+                if curr_acc > best_test_acc:
+                    best_test_acc = curr_acc
                 write_log(
                     f'Epoch [{epoch+1}] with testing accuracy: {curr_acc:.4f}', self.args)
+        write_log(f'Best acc :{best_test_acc:.4f}', self.args)
 
     def label_to_class(self, pred_labels, label_available):
         predictions = []
